@@ -1,10 +1,19 @@
 public class CabMethods
 {
-    public long totalFare(Integer time, Integer dist){
+    public int totalAmt=0;
+    public long totalFare(Integer time, Integer dist)
+    {
+
         try
         {
             long amount = time + dist * 10;
-            return (amount>5)? amount:5;
+            if (amount<5) {
+                amount = 5;
+                totalAmt += 5;
+            }
+            else{
+                totalAmt+=amount;}
+            return amount;
         }
         catch(NullPointerException e)
         {
