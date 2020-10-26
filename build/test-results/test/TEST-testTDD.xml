@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testTDD" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-26T11:24:08" hostname="DESKTOP-7FT5EBS" time="0.003">
+<testsuite name="testTDD" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-26T11:33:56" hostname="DESKTOP-7FT5EBS" time="0.023">
   <properties/>
-  <testcase name="given_Mins_dist_ReturnAmount_Multiple_trips" classname="testTDD" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="given_Mins_dist_forMultipleRides_Return_AvgFare" classname="testTDD" time="0.023"/>
+  <system-out><![CDATA[12.0
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
