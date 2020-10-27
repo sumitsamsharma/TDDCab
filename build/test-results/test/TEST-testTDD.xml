@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testTDD" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-26T11:33:56" hostname="DESKTOP-7FT5EBS" time="0.023">
+<testsuite name="testTDD" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-27T17:47:05" hostname="DESKTOP-7FT5EBS" time="0.04">
   <properties/>
-  <testcase name="given_Mins_dist_forMultipleRides_Return_AvgFare" classname="testTDD" time="0.023"/>
-  <system-out><![CDATA[12.0
+  <testcase name="givenUserId_shouldReturnInvoice" classname="testTDD" time="0.04"/>
+  <system-out><![CDATA[Fare: 5
+Initial Mappings are: {Abc=[5]}
+Fare: 20
+Initial Mappings are: {Abc=[5, 20]}
+Fare: 95
+Initial Mappings are: {Abc=[5, 20, 95]}
+ Charges : 5
+ Charges : 20
+ Charges : 95
+120
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

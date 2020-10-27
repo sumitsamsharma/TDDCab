@@ -1,21 +1,35 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeMap;
+
 public class CabMethods
 {
     public int totalAmt=0;
     public int totalRides=0;
-    public long totalFare(Integer time, Integer dist)
+    public HashMap<String,ArrayList<Long>> ridesDict = new HashMap<>();
+    public ArrayList<Long> fares;
+    public long totalFare(String Id,Integer time, Integer dist)
     {
-        totalRides++;
         try
         {
-            long amount = time + dist * 10;
-            if (amount<5) {
-                amount = 5;
-                totalAmt += 5;
+            long fare = calcAmt(time, dist);
+            System.out.println("Fare: "+fare);
+            ArrayList<Long> rides = new ArrayList<>();
+            if (ridesDict.containsKey(Id)) {
+                rides = ridesDict.get(Id);
+                rides.add(fare);
+                ridesDict.put(Id, rides);
+                System.out.println("Initial Mappings are: " + ridesDict);
             }
-            else{
-                totalAmt+=amount;}
-            return amount;
+            else {
+                rides.add(fare);
+                ridesDict.put(Id, rides);
+                System.out.println("Initial Mappings are: " + ridesDict);
+            }
+            totalRides++;
+            return fare;
         }
+
         catch(NullPointerException e)
         {
             e.printStackTrace();
@@ -23,9 +37,32 @@ public class CabMethods
         }
     }
 
+
     public double avgFare()
     {
         return totalAmt/totalRides;
+    }
+
+    public Invoice rideRepostitory(String Id){
+        fares=ridesDict.get(Id);
+        long totalFare=0;
+        for (long i: fares)
+        {
+            totalFare += i;
+        }
+        long total_rides = fares.size();
+        double average = totalFare/total_rides;
+        return new Invoice(Id,totalFare,totalRides,average);
+    }
+
+    public long calcAmt (Integer time, Integer dist)
+    {
+        long amount = time + dist * 10;
+        if (amount<5) {
+            amount = 5;
+            return amount;
+        }
+        return amount;
     }
 
     public static void main(String args[])
