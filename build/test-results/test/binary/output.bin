@@ -3,10 +3,6 @@
 
 Fare: 20
 %Initial Mappings are: {Abc=[5, 20]}
-
-Fare: 95
-)Initial Mappings are: {Abc=[5, 20, 95]}
- Charges : 5
- Charges : 20
- Charges : 95
-120
+Fare: 145
+*Initial Mappings are: {Abc=[5, 20, 145]}
+170

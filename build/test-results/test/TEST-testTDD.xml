@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testTDD" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-27T17:47:05" hostname="DESKTOP-7FT5EBS" time="0.04">
+<testsuite name="testTDD" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-27T18:10:58" hostname="DESKTOP-7FT5EBS" time="0.046">
   <properties/>
-  <testcase name="givenUserId_shouldReturnInvoice" classname="testTDD" time="0.04"/>
+  <testcase name="givenUserId_shouldReturnInvoice" classname="testTDD" time="0.046"/>
   <system-out><![CDATA[Fare: 5
 Initial Mappings are: {Abc=[5]}
 Fare: 20
 Initial Mappings are: {Abc=[5, 20]}
-Fare: 95
-Initial Mappings are: {Abc=[5, 20, 95]}
- Charges : 5
- Charges : 20
- Charges : 95
-120
+Fare: 145
+Initial Mappings are: {Abc=[5, 20, 145]}
+170
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

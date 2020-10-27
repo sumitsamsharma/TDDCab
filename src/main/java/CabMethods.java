@@ -8,35 +8,57 @@ public class CabMethods
     public int totalRides=0;
     public HashMap<String,ArrayList<Long>> ridesDict = new HashMap<>();
     public ArrayList<Long> fares;
-    public long totalFare(String Id,Integer time, Integer dist)
+    public long totalFare(String Id,type rideType,Integer time, Integer dist)
     {
-        try
-        {
-            long fare = calcAmt(time, dist);
-            System.out.println("Fare: "+fare);
-            ArrayList<Long> rides = new ArrayList<>();
-            if (ridesDict.containsKey(Id)) {
-                rides = ridesDict.get(Id);
-                rides.add(fare);
-                ridesDict.put(Id, rides);
-                System.out.println("Initial Mappings are: " + ridesDict);
+        try {
+            long fare=0;
+            if (rideType == type.Normal) {
+                fare = calcAmt(time, dist);
+                System.out.println("Fare: " + fare);
+                ArrayList<Long> rides = new ArrayList<>();
+                if (ridesDict.containsKey(Id)) {
+                    rides = ridesDict.get(Id);
+                    rides.add(fare);
+                    ridesDict.put(Id, rides);
+                    System.out.println("Initial Mappings are: " + ridesDict);
+                } else {
+                    rides.add(fare);
+                    ridesDict.put(Id, rides);
+                    System.out.println("Initial Mappings are: " + ridesDict);
+                }
+                totalRides++;
             }
-            else {
-                rides.add(fare);
-                ridesDict.put(Id, rides);
-                System.out.println("Initial Mappings are: " + ridesDict);
+
+            else if(rideType == type.Premium)
+            {
+                fare = PremiumCharges(time, dist);
+                System.out.println("Fare: " + fare);
+                ArrayList<Long> rides = new ArrayList<>();
+                if (ridesDict.containsKey(Id)) {
+                    rides = ridesDict.get(Id);
+                    rides.add(fare);
+                    ridesDict.put(Id, rides);
+                    System.out.println("Initial Mappings are: " + ridesDict);
+                } else {
+                    rides.add(fare);
+                    ridesDict.put(Id, rides);
+                    System.out.println("Initial Mappings are: " + ridesDict);
+                }
+                totalRides++;
             }
-            totalRides++;
             return fare;
         }
-
         catch(NullPointerException e)
         {
             e.printStackTrace();
             return 0;
         }
+
     }
 
+    public enum type{
+        Normal,Premium;
+    }
 
     public double avgFare()
     {
@@ -53,6 +75,15 @@ public class CabMethods
         long total_rides = fares.size();
         double average = totalFare/total_rides;
         return new Invoice(Id,totalFare,totalRides,average);
+    }
+
+    public long PremiumCharges(Integer mins, Integer dist)
+    {
+        long charge = mins*2 + dist * 15;
+        if (charge < 20) {
+            return 20;
+        }
+        return charge;
     }
 
     public long calcAmt (Integer time, Integer dist)
